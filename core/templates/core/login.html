@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+<style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .login-form {
+      margin-top: 100px;
+      max-width: 360px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form h2 {
+      color: #f36f21;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .login-form .btn {
+      background-color: #f36f21;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+    }
+
+    .login-form .btn:hover {
+      background-color: #d95e1b;
+    }
+
+    .login-form .form-control:focus {
+      box-shadow: none;
+    }
+
+    .login-form .form-control::placeholder {
+      color: #999;
+    }
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="login-form">
+                <h2>Login</h2>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+            <p>Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

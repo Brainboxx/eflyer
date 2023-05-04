@@ -1,0 +1,171 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="banner_bg_main">
+    <!-- header top section start -->
+    <!-- header top section start -->
+    <!-- logo section start -->
+    <div class="logo_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- logo section end -->
+    <!-- header section start -->
+    <div class="header_section">
+        <div class="container">
+            <div class="containt_main">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="{% url 'home' %}">Home</a>
+                    {% for category in categories %}
+                    <a href="?query={{ query }}&category={{ category.id }}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+                <span class="toggle_icon" onclick="openNav()"><img src="{% static 'images/toggle-icon.png' %}"></span>
+                <div class="main">
+                    <!-- Another variation with a button -->
+                    <form method="get" action="{% url 'search' %}?query={{ query }}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="query" type="text" class="form-control" placeholder="Search this blog" value="{{ query }}" >
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit"
+                                        style="background-color: #f26522; border-color:#f26522 ">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="header_box">
+                    <div class="lang_box ">
+                        <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                            <img src="{% static 'images/flag-uk.png' alt='flag' class='mr-2' title='United Kingdom' %}">
+                            English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu ">
+                            <a href="#" class="dropdown-item">
+                                <img src="{% static 'images/flag-france.png' %}" class="mr-2" alt="flag">
+                                French
+                            </a>
+                        </div>
+                    </div>
+                    <div class="login_menu">
+                        <ul>
+                            {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span class="padding_10">Log out</span></a>
+                            </li>
+                            <li><a href="{% url 'cart' %}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="padding_10">Cart</span></a>
+                                <span class="badge badge-light">{{ num_of_cart_items }}</span>
+                            </li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span class="padding_10">Log in</span></a>
+                            </li>
+                            <li><a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="padding_10">Cart</span></a>
+                                <span class="badge badge-light">{{ num_of_cart_items }}</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header section end -->
+    <!-- banner section start -->
+    <div class="banner_section layout_padding">
+        <div class="container">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Get Start <br>Your favorite shopping</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Get Start <br>Cheap and Affordable</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Get Start <br>Delivery to your doorstep</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- banner section end -->
+</div>
+<!-- banner bg main end -->
+<!-- fashion section start -->
+
+<div class="fashion_section">
+    <div id="main_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="fashion_section_2">
+                        <div class="row">
+                            {% for item in items %}
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="box_main">
+                                    <h4 class="shirt_text">{{ item.name }}</h4>
+                                    <p class="price_text">Start Price <span
+                                            style="color: #262626;">${{ item.price }}</span>
+                                    </p>
+                                    <div class="tshirt_img"><img src="{{ item.image.url }}"></div>
+                                    <div class="btn_main">
+                                        <div class="buy_bt">
+                                            <form method="POST" action="{% url 'item:detail' item.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-orange rounded-pill text-white"
+                                                        style="background-color:#f26522;">View item
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+ {% endblock content %}

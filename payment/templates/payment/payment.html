@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% block title %} Select payment option {% endblock %}
+
+{% block content %}
+<style>
+      .login-form {
+      margin-top: 100px;
+      max-width: 360px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="login-form">
+                <script src="https://www.paypal.com/sdk/js?client-id=ASNhcNTwX9kEH-y_aGPtWDSBA_L3ogvyj1x4HxgmB_5FIXU2NeTSwiS5hUsC9OB3lpI9iWzrvG5YpiQE&currency=USD"></script>
+                <!-- Set up a container element for the button -->
+                <div id="paypal-button-container"></div>
+                <script>
+       // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+
+                            // Set up the transaction
+                            createOrder: function (data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        amount: {
+                                            value: '{{ total_cost }}'
+                                        }
+                                    }]
+                                });
+                            },
+
+                            // Finalize the transaction
+                            onApprove: function (data, actions) {
+                                return actions.order.capture().then(function (details) {
+                                    // Show a success message to the buyer
+                                    alert('Transaction completed by ' + details.payer.name
+                                        .given_name + '!');
+                                });
+                            }
+
+
+                        }).render('#paypal-button-container');
+
+
+
+
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
