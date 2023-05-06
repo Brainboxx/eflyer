@@ -16,9 +16,6 @@ import dj_database_url
 import environ
 import storages.backends.s3boto3
 
-from dotenv import load_dotenv
-
-load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
@@ -39,7 +36,7 @@ SECRET_KEY = 'django-insecure-x9#&ae7%wei=m^k9)3($yy8oxo%^!xs9gp_r0kjc-jf%)%=2a=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/login/'
 # Application definition
@@ -101,7 +98,7 @@ WSGI_APPLICATION = 'eflyer.wsgi.application'
 # Render PostgreSQL database(Live)
 
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
+    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
 
 # Password validation
