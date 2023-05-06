@@ -21,6 +21,7 @@ from core.views import home, login, register, logout, add_to_cart, cart, search
 from payment.views import payment
 from items.views import new
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
