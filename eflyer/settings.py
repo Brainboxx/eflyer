@@ -31,11 +31,12 @@ environ.Env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-x9#&ae7%wei=m^k9)3($yy8oxo%^!xs9gp_r0kjc-jf%)%=2a='
+SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-x9#&ae7%wei=m^k9)3($yy8oxo%^!xs9gp_r0kjc-jf%)%=2a=')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
+# https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/login/'
