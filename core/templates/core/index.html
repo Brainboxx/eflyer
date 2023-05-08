@@ -127,7 +127,6 @@
 </div>
 <!-- banner bg main end -->
 <!-- fashion section start -->
-
 <div class="fashion_section">
     <div id="main_slider" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -165,14 +164,9 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-            <i class="fa fa-angle-right"></i>
-        </a>
     </div>
 </div>
+
 <!-- fashion section end -->
 <!-- electronic section start -->
 <div class="fashion_section">
@@ -189,8 +183,9 @@
                                 <div class="box_main">
                                     <h4 class="shirt_text">{{ item.name }}</h4>
                                     <p class="price_text">Start Price <span
-                                            style="color: #262626;">${{ item.price }}</span></p>
-                                    <div class="electronic_img"><img src="{{ item.image.url }}"></div>
+                                            style="color: #262626;">${{ item.price }}</span>
+                                    </p>
+                                    <div class="tshirt_img"><img src="{{ item.image.url }}"></div>
                                     <div class="btn_main">
                                         <div class="buy_bt">
                                             <form method="POST" action="{% url 'item:detail' item.id %}">
@@ -202,6 +197,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             {% endif %}
                             {% endfor %}
@@ -210,14 +206,9 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#electronic_main_slider" role="button" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="carousel-control-next" href="#electronic_main_slider" role="button" data-slide="next">
-            <i class="fa fa-angle-right"></i>
-        </a>
     </div>
 </div>
+
 <!-- electronic section end -->
 <!-- jewellery  section start -->
 <div class="jewellery_section">
@@ -255,12 +246,6 @@
                 </div>
             </div>
             <div>
-                <a class="carousel-control-prev" href="#jewellery_main_slider" role="button" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                <a class="carousel-control-next" href="#jewellery_main_slider" role="button" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 <div class="loader_main">
                     <div class="loader"></div>
                 </div>
