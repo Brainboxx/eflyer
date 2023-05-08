@@ -3,6 +3,7 @@ from .models import Item, Category
 
 # Create your views here.
 def new(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         category = request.POST['category']
         category, created = Category.objects.get_or_create(name=category)
@@ -15,8 +16,10 @@ def new(request):
         new_item.save()
 
         return redirect('home')
-
-    return render(request, 'items/form.html')
+    context={
+        'categories':categories
+    }
+    return render(request, 'items/form.html', context)
 
 def detail(request, pk):
     item = get_object_or_404(Item, pk=pk)
