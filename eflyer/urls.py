@@ -18,6 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from core.views import home, login, register, logout, add_to_cart, cart, search
+from django.contrib.admin.views.decorators import staff_member_required
 from payment.views import payment
 from items.views import new
 
@@ -28,7 +29,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('register/', register, name='register'),
-    path('new/', new, name='new'),
+    path('new/', staff_member_required(new), name='new'),
     path('items', include('items.urls')),
     path('search/', search, name='search'),
     path('pay/', payment, name='pay'),

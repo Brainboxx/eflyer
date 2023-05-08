@@ -137,11 +137,13 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_S3_CUSTOM_DOMAIN = 'eflyer-edu.s3.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = 'eflyer-project-files.s3.amazonaws.com'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, '')
+MEDIA_ROOT = ''
 # MEDIA_ROOT = BASE_DIR / 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
