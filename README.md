@@ -2,7 +2,7 @@
 
 <p>This is an e-commerce project built using Django. It includes basic features such as product listing, product detail page, shopping cart, checkout. It also supports user authentication, so users can create accounts, log in, and view their orders.</p>
 <h2>Installation</h2>
-<li>Clone the repository "git clone https://github.com/Brainboxx/eflyer.git)"</li>
+<li>Clone the repository "git clone https://github.com/Brainboxx/eflyer.git"</li>
 <li>Create a virtual environment and activate it: "python -m venv env
 source env/bin/activate  # for Linux/MacOS
 env\Scripts\activate  # for Windows" </li>
