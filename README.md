@@ -18,4 +18,4 @@ Go to http://localhost:8000/ in your web browser.</li>
 <li>Checkout: Users can proceed to place their order. Paypal api was integrated for this purpose</li>
 <h2>Contributing</h2>
 <p>Contributions are welcome! If you find a bug or want to suggest an improvement, please open an issue or submit a pull request.</p>
-<p> This project is deployed, you can check it out https://eflyeredu.onrender.com/ </p>
+<p> This project is deployed, you can check it out https://eflyer-1jl2.onrender.com/ </p>
